@@ -1,6 +1,6 @@
 # WiredGeist Mail Guard
 
-![Main Interface](./screenshots/Wiredgeist_mail_guard.png)
+![Main Interface](./screenshots/example.png)
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 ![Python Version](https://img.shields.io/badge/Python-3.10+-blue.svg)
