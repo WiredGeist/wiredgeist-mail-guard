@@ -19,7 +19,7 @@ The entire analysis is performed on your machine, ensuring your privacy.
   - **Attachment Hash Analysis:** Extracts attachment hashes and checks them against the **VirusTotal** database for known malware.
   - **Content & Keyword Scanning:** Analyzes the email body for common phishing keywords, urgency triggers, and suspicious phrases.
   - **Local LLM-Powered AI Analysis:** This is the core of the tool. The email content is sent to a local LLM running via **Ollama** for a sophisticated verdict.
-- **Flexible AI Backend:** A dropdown menu allows you to choose which locally installed Ollama model you want to use for the analysis, from `llama3` to specialized reasoning models.
+- **Flexible AI Backend:** A dropdown menu allows you to choose which locally installed Ollama model you want to use for the analysis, from `llama3` to specialized reasoning models like `gemma`, `OSS-GPT` or `deepseek-r1`.
 - **Interactive Web Interface:** Built with **Gradio** for a clean, modern, and easy-to-use interface that runs in your browser.
 - **Manual Analysis:** Provides a "Manual Paste" tab where you can paste the raw source of any email for an instant analysis.
 - **Post-Scan Actions:** After an email is analyzed, you can immediately delete it or report it as spam directly from the app's interface.
