@@ -6,31 +6,63 @@
 ![Python Version](https://img.shields.io/badge/Python-3.10+-blue.svg)
 ![Framework](https://img.shields.io/badge/Framework-Gradio-orange.svg)
 
-WiredGeist Mail Guard is a smart, locally-run email security tool designed to protect your inbox from phishing attacks. It connects directly to your Gmail account, fetches your latest unread email, and performs a multi-layered analysis using traditional methods and the power of local Large Language Models (LLMs) via Ollama.
+WiredGeist Mail Guard is a **privacy-first, local threat intelligence platform** designed to turn your inbox into an investigative dashboard. It connects directly to your Gmail account and performs a deep, multi-layered investigation on your latest unread email. It goes far beyond simple scanning by **automatically pivoting** from indicators like IP addresses and domains to uncover the attacker's hidden infrastructure. All findings are logged to a persistent **local database**, allowing the tool to remember attackers and identify recurring campaigns over time.
 
-The entire analysis is performed on your machine, ensuring your privacy.
+The final verdict is synthesized by a **local Large Language Model (LLM)** running via **Ollama**, which acts as a strategic analyst to assess the attacker's tactics and intent. The entire process—from analysis to investigation to intelligence storage—runs **100% on your machine**. Your emails and data never leave your control.
 
 
 ## Key Features
 
-- **Direct Gmail Integration:** Scans your latest unread email with a single click, automatically marking it as read after analysis.
-- **Multi-Layered Analysis Engine:** Your email is scrutinized by a pipeline of security modules for a comprehensive verdict:
-  - **Header & Authentication Analysis:** Checks for critical security failures in **SPF, DKIM, and DMARC** records to verify the sender's authenticity.
-  - **Attachment Hash Analysis:** Extracts attachment hashes and checks them against the **VirusTotal** database for known malware.
-  - **Content & Keyword Scanning:** Analyzes the email body for common phishing keywords, urgency triggers, and suspicious phrases.
-  - **Local LLM-Powered AI Analysis:** This is the core of the tool. The email content is sent to a local LLM running via **Ollama** for a sophisticated verdict.
-- **Flexible AI Backend:** A dropdown menu allows you to choose which locally installed Ollama model you want to use for the analysis, from `llama3` to specialized reasoning models like `gemma`, `OSS-GPT` or `deepseek-r1`.
-- **Interactive Web Interface:** Built with **Gradio** for a clean, modern, and easy-to-use interface that runs in your browser.
-- **Manual Analysis:** Provides a "Manual Paste" tab where you can paste the raw source of any email for an instant analysis.
-- **Post-Scan Actions:** After an email is analyzed, you can immediately delete it or report it as spam directly from the app's interface.
+WiredGeist Mail Guard has evolved from a simple scanner into a semi-autonomous threat intelligence platform. It uses a multi-layered engine to not only analyze threats but to investigate their origins and remember them for the future.
+
+### 🧠 Core Intelligence Engine
+
+- **Persistent Threat Database:** The heart of the system. Every indicator (IP, domain, URL, hash) from every scan is logged to a local SQLite database, building a private, long-term intelligence archive of attacker infrastructure.
+- **Historical Reputation Alerts:** Before any analysis, the tool cross-references new email indicators against its database. It instantly flags repeat offenders and known malicious infrastructure from past attacks.
+- **Automated Investigation Pivoting:** The tool thinks like an analyst. It takes initial indicators like an IP address and automatically performs reverse lookups to find related domains, then investigates *those* new domains in a loop, unmasking the attacker's hidden network.
+
+### 🔬 Multi-Layered Technical Analysis
+
+- **Geographic Origin Mapping:** Traces the email's origin IP, geolocates it, and displays the location on an interactive map, providing immediate context for where the email *really* came from.
+- **Deep Link Analysis (VirusTotal):** Extracts all URLs from the email body and submits them to the **VirusTotal** API to check for malicious content, phishing pages, or malware.
+- **Sender Domain & Infrastructure Analysis:** Performs deep dives on the sender's domain and IP address, revealing domain age, SSL certificate relationships, and other domains hosted on the same server ("neighbors").
+- **Header & Authentication Checks:** Verifies email authenticity by scrutinizing critical **SPF, DKIM, and DMARC** records for failures.
+- **Attachment Hash Scanning (VirusTotal):** Analyzes file attachments by checking their MD5 hash against the **VirusTotal** database for known malware.
+
+### 🤖 AI-Powered Strategic Assessment
+
+- **The "Chief Analyst" LLM:** The AI is no longer just a text scanner. It receives a full JSON intelligence report with all technical findings (IP data, link scans, history, etc.) and acts as a final synthesizer.
+- **Tactical & Psychological Analysis:** The AI is prompted to identify the specific **attack vector** (e.g., "Credential Harvesting"), the **deception tactic** used (e.g., "False Urgency"), and provides a strategic **threat hypothesis** about the attacker's skill and intent.
+- **Actionable Recommendations:** The AI provides a clear, safe list of recommended actions for the user, such as "Verify by logging into the official website directly."
+- **Flexible & Local AI Backend:** Connects to any LLM running locally via **Ollama**. A dropdown menu lets you switch between models like `Llama 3`, `Mistral`, or any other you have installed, ensuring 100% privacy.
+
+### 🖥️ User Interface & Workflow
+
+- **Interactive Dashboard:** Built with **Gradio** for a clean, modern, and easy-to-use interface that runs in your browser.
+- **On-Demand AI Analysis:** The heavy technical scan runs first. AI analysis can be toggled on or off, allowing you to get a quick result and then run the deeper AI assessment on demand.
+- **Direct Gmail Integration:** Scans your latest unread email with a single click and automatically marks it as read post-analysis.
+- **Post-Scan Actions:** Instantly delete the email or report it as spam directly from the UI.
 
 ## Technology Stack
 
-- **Backend:** Python
-- **AI:** Local Large Language Models via [Ollama](https://ollama.com/)
-- **Web UI:** [Gradio](https://www.gradio.app/)
-- **Email Service:** Google Gmail API
-- **Threat Intelligence:** VirusTotal API (for attachments)
+-   **Backend & Data Storage:**
+    -   **Python:** The core language for all logic and integrations.
+    -   **SQLite3:** Powers the persistent, local threat intelligence database, giving the tool memory.
+
+-   **AI Engine:**
+    -   **Local Large Language Models** via [Ollama](https://ollama.com/): For privacy-first, on-device strategic analysis of threat intelligence reports.
+
+-   **User Interface:**
+    -   **Gradio:** For the clean, interactive, and modern web-based dashboard.
+
+-   **Intelligence Services & APIs:**
+    -   **Google Gmail API:** For secure, direct integration with the user's inbox.
+    -   **VirusTotal API:** The primary source for external threat intelligence, used for:
+        -   File Hash Reputation
+        -   URL Scanning & Analysis
+        -   Reverse IP Lookups (Passive DNS)
+        -   Domain & SSL Certificate Reports
+    -   **ip-api.com:** For fast, key-less IP address geolocation and network information.
 
 ## Setup and Installation
 
