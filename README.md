@@ -3,7 +3,7 @@
 ![Main Interface](./screenshots/Wiredgeist_mail_guard.png)
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
-![Python Version](https://img.shields.io/badge/Python-3.8+-blue.svg)
+![Python Version](https://img.shields.io/badge/Python-3.10+-blue.svg)
 ![Framework](https://img.shields.io/badge/Framework-Gradio-orange.svg)
 
 WiredGeist Mail Guard is a smart, locally-run email security tool designed to protect your inbox from phishing attacks. It connects directly to your Gmail account, fetches your latest unread email, and performs a multi-layered analysis using traditional methods and the power of local Large Language Models (LLMs) via Ollama.
@@ -38,7 +38,7 @@ The entire analysis is performed on your machine, ensuring your privacy.
 
 ### 1. Prerequisites
 
-- **Python 3.8+**
+- **Python 3.10+**
 - **Ollama Installed:** You must have Ollama running on your machine. You can download it from [ollama.com](https://ollama.com/).
 - **Local LLM Models:** Pull the models you want to use. At a minimum, pull Llama 3:
   ```bash
