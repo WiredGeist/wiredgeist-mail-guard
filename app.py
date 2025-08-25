@@ -19,7 +19,6 @@ from cred import vt_api_key
 from web_utils import create_gmail_button_html
 
 # --- 1. THEME & CSS ---
-# (This section is unchanged, so it is omitted for brevity)
 font = gr.themes.GoogleFont("Inter")
 bw_theme = gr.themes.Base(font=font, primary_hue=gr.themes.colors.sky, neutral_hue=gr.themes.colors.slate).set(body_background_fill="#111111",block_background_fill="#1e1e1e",block_border_width="1px",border_color_primary="#333333",body_text_color="#EAEAEA",button_primary_background_fill="*primary_200",button_primary_text_color="#000000",block_title_text_color="*primary_200",block_label_text_color="*neutral_400",input_background_fill="#2c2c2c",)
 custom_css = """#app-title { text-align: center; font-size: 3em; font-weight: 600; color: #AEC6CF; padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid #333; } #scan-button:hover { box-shadow: 0 0 12px 2px #AEC6CF; transform: scale(1.01); transition: all 0.2s ease-in-out; }"""
@@ -42,11 +41,6 @@ def get_available_models():
 
         if not models_list:
             return ["No local models found"]
-        
-        # --- THE FINAL FIX ---
-        # The traceback confirms the key is not 'name'.
-        # The raw output shows the attribute is 'model'.
-        # We change model['name'] to model['model'].
         model_names = [model['model'] for model in models_list]
 
         if not model_names:
@@ -104,7 +98,6 @@ def perform_core_analysis(sender, subject, html_content, plain_text_body, header
     header_score, header_reasons = analyze_headers(header_text)
     subject_score, subject_reasons = subject_analysis(subject)
     content_score, content_reasons = content_analysis.content_analysis(text_for_analysis)
-    # Pass the selected model to the AI analysis function
     ai_verdict, ai_score, ai_reason = ai_ward.analyze_with_ai(sender, subject, text_for_analysis, model_name)
     
     ai_highlight_keywords = re.findall(r"'(.*?)'", ai_reason)
@@ -281,4 +274,5 @@ if __name__ == "__main__":
     print("  WiredGeist Mail Guard - Starting Up")
     print("-----------------------------------------")
     print("Make sure your Ollama application is running.")
+
     demo.launch()
