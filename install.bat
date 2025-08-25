@@ -17,10 +17,6 @@ echo.
 
 :: --- Virtual Environment and Installation ---
 echo Creating virtual environment with Python 3.10...
-
-:: ==========================================================
-::  THIS IS THE KEY CHANGE. We are forcing the venv to use Python 3.10.
-:: ==========================================================
 py -3.10 -m venv venv
 
 echo.
@@ -47,5 +43,6 @@ python app.py
 echo.
 echo Application finished. Press any key to exit.
 pause > nul
+
 
 endlocal
