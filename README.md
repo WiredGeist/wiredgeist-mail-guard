@@ -43,6 +43,7 @@ The entire analysis is performed on your machine, ensuring your privacy.
   ollama pull llama3
   ```
   FYI: its system message is also optimized for OSS-GPT 20B
+  
 - **Google Cloud Project with Gmail API Enabled:**
   1. Follow Steps 1 and 2 of the Google API Python Quickstart to enable the API and download your `credentials.json` file.
   2. Place the downloaded `credentials.json` file in the same directory as the application.
@@ -50,15 +51,61 @@ The entire analysis is performed on your machine, ensuring your privacy.
 
 ### 2. Clone the Repository
 
-### 3. Install Dependencies
+### 3. Installation (Created and tested on windows)
 
-It's recommended to use a virtual environment.
+This project uses a Python virtual environment to keep its dependencies isolated from your system. The setup process is automated for Windows users.
 
-(You will need to create a `requirements.txt` file containing `gradio`, `google-api-python-client`, `google-auth-httplib2`, `google-auth-oauthlib`, and `ollama`)
+#### 🖥️ For Windows Users (Recommended) 
+
+The entire setup process is handled by a single script.
+
+1.  Ensure you have Python 3.10 or newer installed.
+2.  Simply double-click the **`install.bat`** file.
+
+This script will automatically:
+- Check for a compatible Python version.
+- Create a virtual environment in a folder named `venv`.
+- Install all the required packages from `requirements.txt`.
+- Launch the application for the first time.
+
+#### 🍎 For macOS / 🐧 Linux Users
+
+You will need to create the virtual environment manually.
+
+1.  Open your terminal in the project's root directory.
+
+2.  Create the virtual environment:
+    ```bash
+    python3 -m venv venv
+    ```
+
+3.  Activate the environment:
+    ```bash
+    source venv/bin/activate
+    ```
+
+4.  Install the required packages:
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+### 4. Running the Application
+
+Once the installation is complete, here is how you run the app for daily use:
+
+-   **On Windows:** Double-click the **`start_app.bat`** script.
+
+-   **On macOS / Linux:**
+    1.  Make sure you are in the project directory and the virtual environment is active:
+        ```bash
+        source venv/bin/activate
+        ```
+    2.  Run the application with the command:
+        ```bash
+        python3 app.py
+        ```
 
 ### 4. Configure API Keys
-
-Create a file named `cred.py`.
 
 Inside `cred.py`, add your VirusTotal API key.
 
