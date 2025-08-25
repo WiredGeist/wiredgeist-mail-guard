@@ -10,8 +10,6 @@ WiredGeist Mail Guard is a smart, locally-run email security tool designed to pr
 
 The entire analysis is performed on your machine, ensuring your privacy.
 
-![Highlighting Feature](./screenshots/Original_message_highlights.png)
-
 
 ## Key Features
 
