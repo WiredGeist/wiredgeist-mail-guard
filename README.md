@@ -42,6 +42,7 @@ The entire analysis is performed on your machine, ensuring your privacy.
   ```bash
   ollama pull llama3
   ```
+  FYI: its system message is also optimized for OSS-GPT 20B
 - **Google Cloud Project with Gmail API Enabled:**
   1. Follow Steps 1 and 2 of the Google API Python Quickstart to enable the API and download your `credentials.json` file.
   2. Place the downloaded `credentials.json` file in the same directory as the application.
