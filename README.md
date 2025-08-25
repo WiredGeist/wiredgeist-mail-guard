@@ -107,8 +107,11 @@ Once the installation is complete, here is how you run the app for daily use:
 
 ### 4. Configure API Keys
 
-Inside `cred.py`, add your VirusTotal API key.
+1.  In the project folder, find the file named `cred.py.example`.
+2.  Make a **copy** of this file and rename the copy to **`cred.py`**.
+3.  Open the new `cred.py` file and replace `"YOUR_VIRUSTOTAL_API_KEY_HERE"` with your actual VirusTotal API key.
 
+The application is configured to ignore the `cred.py` file, so you can't accidentally expose your key.
 ### 5. Run the Application
 
 Once everything is installed and configured, launch the app.
